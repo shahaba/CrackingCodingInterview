@@ -1,41 +1,5 @@
 # RemoveDups: Remove duplicates from unsorted LinkedList:
-
-
-# Node object
-class Node:
-
-    def __init__(self, value):
-        self.value = value
-        self.next = None
-
-
-# Linked List Object
-class SLinkedList:
-
-    def __init__(self):
-        self.head = None
-
-    def __str__(self):
-        if self.head is None:
-            return 'Empty'
-
-        sll_str = []
-        current = self.head
-
-        while current:
-            sll_str.append(str(current.value))
-            current = current.next
-
-        return ', '.join(sll_str)
-
-    def insert(self, value):
-        if self.head is None:
-            self.head = Node(value)
-            return
-
-        temp = self.head
-        self.head = Node(value)
-        self.head.next = temp
+from singly_linkedlist import LinkedList
 
 
 # delete Node
@@ -77,8 +41,8 @@ def removeDupsNoDS(head):
             next = next.next
 
 
-sll1 = SLinkedList()
-sll2 = SLinkedList()
+sll1 = LinkedList()
+sll2 = LinkedList()
 sll1.insert(0)
 sll1.insert(1)
 sll1.insert(2)
