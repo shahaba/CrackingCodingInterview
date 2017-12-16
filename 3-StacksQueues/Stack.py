@@ -6,34 +6,34 @@ class Stack:
     def __init__(self):
         self.head = None
         self.capacity = 10
-        self.size = 0
+        self.size = 1
 
-    def push(self, value):
-        if self.is_empty():
-            self.head = Node(value)
-            self.head.set_min(value)
-            self.size += 1
+    def push(self, item):
+        # If stack is empty
+        if self.isEmpty():
+            # Insert first node
+            self.head = Node(item)
+            self.head.setMin(item)
             return
 
-        self.size += 1
+        # Insert new Node @ top of stack
         temp = self.head
-
-        # When stack is at capacity
-        if self.size >= self.capacity:
-            self.head = Stack()
-            self.head.push(value)
-        else:
-            self.head = Node(value)
-
+        self.head = Node(item)
         self.head.next = temp
+        self.size += 1
+
+        # Update min value stored in Node
+        if temp.min > item:
+            self.head.setMin(item)
+        else:
+            self.head.setMin(temp.min)
 
     def pop(self):
-        if self.is_empty():
+        # If the stack is empty
+        if self.isEmpty():
             return 'Empty'
 
-        if isinstance(self.head, Stack):
-            return 'is class'
-
+        # Return top node
         temp = self.head
         self.head = self.head.next
         self.size -= 1
@@ -41,7 +41,13 @@ class Stack:
         return temp.value
 
     def peek(self):
-        return self.head
+        return self.head.value if self.head else None
 
-    def is_empty(self):
+    def isEmpty(self):
         return self.head is None
+
+    def isFull(self):
+        return self.size == self.capacity
+
+    def getMin(self):
+        return 'Empty' if self.head is None else self.head.getMin()
