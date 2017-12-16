@@ -4,4 +4,4 @@
   - [x] 1. Is Unique
   - [x] 2. Check Permutation
 - [x] Ch 2. Linked Lists
-- [] Ch 3. Stacks and Queues
+- [ ] Ch 3. Stacks and Queues
