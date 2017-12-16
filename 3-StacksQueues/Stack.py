@@ -31,7 +31,6 @@ class Stack:
         if self.is_empty():
             return 'Empty'
 
-        print(type(self.head))
         if isinstance(self.head, Stack):
             return 'is class'
 
