@@ -12,3 +12,12 @@ class Node:
 
     def getMin(self):
         return self.min
+
+
+class AnimalNode:
+
+    def __init__(self, name, time):
+        self.name = name
+        self.timestamp = time
+        self.next = None
+        self.prev = None

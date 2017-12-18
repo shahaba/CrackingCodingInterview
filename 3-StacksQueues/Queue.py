@@ -1,4 +1,4 @@
-from Node import Node
+from Node import *
 
 
 class Queue:
@@ -6,9 +6,10 @@ class Queue:
     def __init__(self):
         self.head = None
         self.end = None
+        self.type = None
 
     def enqueue(self, value):
-        if self.is_empty():
+        if self.isEmpty():
             self.head = Node(value)
             self.end = self.head
             return
@@ -17,19 +18,26 @@ class Queue:
         self.end = Node(value)
         temp.next = self.end
 
+    def enqueue(self, name, timestamp):
+        if self.isEmpty():
+            self.head = AnimalNode(name, timestamp)
+            self.end = self.head
+            return
+
+        temp = self.end
+        self.end = AnimalNode(name, timestamp)
+        temp.next = self.end
+
     def dequeue(self):
-        if self.is_empty():
+        if self.isEmpty():
             return 'Empty'
 
         temp = self.head
         self.head = self.head.next
-        return temp.value
+        return temp
 
     def peek(self):
-        if self.isEmpty():
-            return 'Empty'
+        return None if self.isEmpty() else self.head
 
-        return self.head.value
-
-    def is_empty(self):
+    def isEmpty(self):
         return self.head is None
