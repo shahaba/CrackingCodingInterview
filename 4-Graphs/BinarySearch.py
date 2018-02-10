@@ -27,9 +27,9 @@ class BinarySearchTree:
         return ' '.join(bst) + ' Height: ' + str(height)
 
     def insert(self, lst):
-        self.root = self.insertList(self.root, lst, 0, 1)
+        self.root = self.insertList(self.root, lst, 0, 1, None)
 
-    def insertList(self, current, lst, height, depth):
+    def insertList(self, current, lst, height, depth, parent):
         length = len(lst)
 
         if length == 0:
@@ -43,9 +43,10 @@ class BinarySearchTree:
             mid = length // 2
 
         current = TreeNode(lst[mid], height, height + 1)
+        current.parent = parent
 
-        current.left = self.insertList(current.left, lst[:mid], height + 1, height + 2)
-        current.right = self.insertList(current.right, lst[mid + 1:], height + 1, height + 2)
+        current.left = self.insertList(current.left, lst[:mid], height + 1, height + 2, current)
+        current.right = self.insertList(current.right, lst[mid + 1:], height + 1, height + 2, current)
 
         return current
 

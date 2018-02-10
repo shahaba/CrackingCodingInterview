@@ -9,6 +9,7 @@ class TreeNode:
 
     def __init__(self, value, height, depth):
         self.value = value
+        self.parent = None
         self.left = None
         self.right = None
         self.height = height

@@ -3,6 +3,7 @@ from BinarySearch import BinarySearchTree
 from Node import TreeNode
 from Queue import Queue
 
+
 def checkRoot(root, queue):
 
     if root.left:
